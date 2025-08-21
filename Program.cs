@@ -14,7 +14,7 @@
             targets.Add("b");
             targets.Add(-1);
 
-            BinaryTree<Object> objectTree;
+            BinarySearchTree<Object> objectTree;
 
             var arraysAndTargets = arrays.Zip(targets, (a, t) => new { array = a, target = t });
             // var arraysAndTargets = arrays.Zip(targets, Tuple.Create);
@@ -47,15 +47,15 @@
                 {
                     Console.WriteLine("Found!");
                     Console.WriteLine("In-order traversal: ");
-                    BinaryTree<Object>.InOrderTraversal(subtree, objectTree.Operation);
+                    BinarySearchTree<Object>.InOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
 
                     Console.WriteLine("Preorder traversal: ");
-                    BinaryTree<Object>.PreOrderTraversal(subtree, objectTree.Operation);
+                    BinarySearchTree<Object>.PreOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
 
                     Console.WriteLine("Postorder traversal: ");
-                    BinaryTree<Object>.PostOrderTraversal(subtree, objectTree.Operation);
+                    BinarySearchTree<Object>.PostOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
                 }
                 else

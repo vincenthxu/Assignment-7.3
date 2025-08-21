@@ -1,6 +1,6 @@
 ﻿namespace Assignment_7._3
 {
-    public class BinaryTree<T>
+    public class BinarySearchTree<T> : IBinaryTree<T>
     {
         public delegate void TraversalOperation(Node<T>? value);
 
@@ -16,7 +16,7 @@
         #endregion
 
         #region Constructors
-        public BinaryTree()
+        public BinarySearchTree()
         {
             root = null;
             count = 0;
@@ -91,7 +91,7 @@
             return parent;
         }
         public void InOrderTraversal() => InOrderTraversal(Root, Operation);
-        public static void InOrderTraversal(BinaryTree<T> tree) => InOrderTraversal(tree.Root, tree.Operation);
+        public static void InOrderTraversal(BinarySearchTree<T> tree) => InOrderTraversal(tree.Root, tree.Operation);
         public static void InOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
@@ -102,7 +102,7 @@
             }
         }
         public void PreOrderTraversal() => PreOrderTraversal(Root, Operation);
-        public static void PreOrderTraversal(BinaryTree<T> tree) => PreOrderTraversal(tree.Root, tree.Operation);
+        public static void PreOrderTraversal(BinarySearchTree<T> tree) => PreOrderTraversal(tree.Root, tree.Operation);
         public static void PreOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
@@ -113,7 +113,7 @@
             }
         }
         public void PostOrderTraversal() => PostOrderTraversal(Root, Operation);
-        public static void PostOrderTraversal(BinaryTree<T> tree) => PostOrderTraversal(tree.Root, tree.Operation);
+        public static void PostOrderTraversal(BinarySearchTree<T> tree) => PostOrderTraversal(tree.Root, tree.Operation);
         public static void PostOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if(current != null)
