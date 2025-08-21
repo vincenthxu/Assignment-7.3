@@ -91,7 +91,7 @@
             return parent;
         }
         public void InOrderTraversal() => InOrderTraversal(Root, Operation);
-        public static void InOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => InOrderTraversal(tree.Root, Operation);
+        public static void InOrderTraversal(BinaryTree<T> tree) => InOrderTraversal(tree.Root, tree.Operation);
         public static void InOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
@@ -102,7 +102,7 @@
             }
         }
         public void PreOrderTraversal() => PreOrderTraversal(Root, Operation);
-        public static void PreOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => PreOrderTraversal(tree.Root, Operation);
+        public static void PreOrderTraversal(BinaryTree<T> tree) => PreOrderTraversal(tree.Root, tree.Operation);
         public static void PreOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
@@ -113,7 +113,7 @@
             }
         }
         public void PostOrderTraversal() => PostOrderTraversal(Root, Operation);
-        public static void PostOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => PostOrderTraversal(tree.Root, Operation);
+        public static void PostOrderTraversal(BinaryTree<T> tree) => PostOrderTraversal(tree.Root, tree.Operation);
         public static void PostOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if(current != null)
