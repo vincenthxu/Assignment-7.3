@@ -2,6 +2,8 @@
 {
     public class BinaryTree<T>
     {
+        public delegate void TraversalOperation(Node<T>? value);
+
         #region Fields
         private Node<T>? root;
         private int count;
@@ -10,6 +12,7 @@
         #region Properties
         public Node<T>? Root => root;
         public int Count => count;
+        public TraversalOperation Operation { get; set; }
         #endregion
 
         #region Constructors
@@ -17,17 +20,12 @@
         {
             root = null;
             count = 0;
+            Operation = (Node<T>? n) => Console.Write($"{n} ");
         }
         #endregion
 
         #region Methods
-        public void Insert(T[] values)
-        {
-            foreach (var item in values)
-            {
-                Insert(item);
-            }
-        }
+        public void Insert(T[] values) => Array.ForEach<T>(values, t => Insert(t));
         public bool Insert(T value) => Insert(new Node<T>(value));
         public bool Insert(Node<T>? newNode)
         {
@@ -92,37 +90,37 @@
             }
             return parent;
         }
-        public void InOrderTraversal() => InOrderTraversal(Root);
-        public static void InOrderTraversal(BinaryTree<T> tree) => InOrderTraversal(tree.Root);
-        public static void InOrderTraversal(Node<T>? current)
+        public void InOrderTraversal() => InOrderTraversal(Root, Operation);
+        public static void InOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => InOrderTraversal(tree.Root, Operation);
+        public static void InOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
             {
-                InOrderTraversal(current.Left);
-                Console.Write($"{current} ");
-                InOrderTraversal(current.Right);
+                InOrderTraversal(current.Left, Operation);
+                Operation(current);
+                InOrderTraversal(current.Right, Operation);
             }
         }
-        public void PreOrderTraversal() => PreOrderTraversal(Root);
-        public static void PreOrderTraversal(BinaryTree<T> tree) => PreOrderTraversal(tree.Root);
-        public static void PreOrderTraversal(Node<T>? current)
+        public void PreOrderTraversal() => PreOrderTraversal(Root, Operation);
+        public static void PreOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => PreOrderTraversal(tree.Root, Operation);
+        public static void PreOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if (current != null)
             {
-                Console.Write($"{current} ");
-                PreOrderTraversal(current.Left);
-                PreOrderTraversal(current.Right);
+                Operation(current);
+                PreOrderTraversal(current.Left, Operation);
+                PreOrderTraversal(current.Right, Operation);
             }
         }
-        public void PostOrderTraversal() => PostOrderTraversal(Root);
-        public static void PostOrderTraversal(BinaryTree<T> tree) => PostOrderTraversal(tree.Root);
-        public static void PostOrderTraversal(Node<T>? current)
+        public void PostOrderTraversal() => PostOrderTraversal(Root, Operation);
+        public static void PostOrderTraversal(BinaryTree<T> tree, TraversalOperation Operation) => PostOrderTraversal(tree.Root, Operation);
+        public static void PostOrderTraversal(Node<T>? current, TraversalOperation Operation)
         {
             if(current != null)
             {
-                PostOrderTraversal(current.Left);
-                PostOrderTraversal(current.Right);
-                Console.Write($"{current} ");
+                PostOrderTraversal(current.Left, Operation);
+                PostOrderTraversal(current.Right, Operation);
+                Operation(current);
             }
         }
         #endregion

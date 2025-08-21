@@ -24,19 +24,20 @@
                 Print(tuple.array);
 
                 objectTree = new();
+                // objectTree.Operation = (Node<Object>? n) => { Console.Write($"[{n}] "); };
                 Console.WriteLine("Inserting into BinaryTree...");
                 objectTree.Insert(tuple.array);
                 Console.WriteLine($"Inserted {objectTree.Count} elements into BinaryTree");
 
-                Console.Write("In-order traversal: ");
+                Console.WriteLine("In-order traversal: ");
                 objectTree.InOrderTraversal();
                 Console.WriteLine();
 
-                Console.Write("Preorder traversal: ");
+                Console.WriteLine("Preorder traversal: ");
                 objectTree.PreOrderTraversal();
                 Console.WriteLine();
 
-                Console.Write("Postorder traversal: ");
+                Console.WriteLine("Postorder traversal: ");
                 objectTree.PostOrderTraversal();
                 Console.WriteLine();
 
@@ -45,16 +46,16 @@
                 if (subtree != null)
                 {
                     Console.WriteLine("Found!");
-                    Console.Write("In-order traversal: ");
-                    BinaryTree<Object>.InOrderTraversal(subtree);
+                    Console.WriteLine("In-order traversal: ");
+                    BinaryTree<Object>.InOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
 
-                    Console.Write("Preorder traversal: ");
-                    BinaryTree<Object>.PreOrderTraversal(subtree);
+                    Console.WriteLine("Preorder traversal: ");
+                    BinaryTree<Object>.PreOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
 
-                    Console.Write("Postorder traversal: ");
-                    BinaryTree<Object>.PostOrderTraversal(subtree);
+                    Console.WriteLine("Postorder traversal: ");
+                    BinaryTree<Object>.PostOrderTraversal(subtree, objectTree.Operation);
                     Console.WriteLine();
                 }
                 else
